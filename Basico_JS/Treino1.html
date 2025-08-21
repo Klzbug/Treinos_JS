@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Imagem andando</title>
+  <style>
+    body {
+      height: 100vh;
+      background: #f0f0f0;
+      overflow: hidden; /* impede barra de rolagem */
+    }
+
+    img {
+      position: absolute; /* permite mover com left */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  <img src="carro-removebg-preview.png" id="minhaImagem">
+
+  <script>
+    const img = document.getElementById("minhaImagem");
+
+    // começa fora da tela, na direita
+    let pos = window.innerWidth;
+
+    function mover() {
+      pos -= 3; // diminui, vai para a esquerda
+      img.style.left = pos + "px";
+
+      // quando sair da esquerda, volta lá pra direita
+      if (pos < -120) {
+        pos = window.innerWidth;
+      }
+    }
+
+    setInterval(mover, 20); // chama mover a cada 20ms
+  </script>
+</body>
+</html>
